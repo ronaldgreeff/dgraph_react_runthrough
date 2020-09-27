@@ -69,7 +69,8 @@ export default class TodoApp extends React.Component {
     this.props.model.destroy(todo)
 
   edit = todo =>
-    this.setState({ editing: todo.id })
+    this.setState({ editing: todo.uid })
+    // use dgraphs uid as more compact and efficient
 
   save = (todoToSave, text) => {
     this.props.model.save(todoToSave, text)
@@ -99,12 +100,12 @@ export default class TodoApp extends React.Component {
 
     const todoItems = shownTodos.map(todo => (
       <TodoItem
-        key={todo.id}
+        key={todo.uid}
         todo={todo}
         onToggle={() => this.toggle(todo)}
         onDestroy={() => this.destroy(todo)}
         onEdit={() => this.edit(todo)}
-        editing={editing === todo.id}
+        editing={editing === todo.uid}
         onSave={text => this.save(todo, text)}
         onCancel={this.cancel}
       />
