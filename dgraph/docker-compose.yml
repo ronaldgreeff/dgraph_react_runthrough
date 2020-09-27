@@ -39,4 +39,4 @@ services:
     command: dgraph-ratel
 
 volumes:
-  dgraph
+  dgraph:
